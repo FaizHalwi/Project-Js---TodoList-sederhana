@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      li {
+        list-style-type: none;
+      }
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todolist Js</h1>
+    <div class="container">
+      <form action="#">
+        <input type="text" id="new_text" />
+        <button onclick="add()">add</button>
+      </form>
+
+      <ul id="todo"></ul>
+    </div>
+  </body>
+  <script>
+    const todo = document.getElementById("todo");
+
+    function add() {
+      let newText = document.getElementById("new_text");
+
+      let newTodo =
+        "<li> <span onclick = toggle(this)>" +
+        newText.value +
+        "</span>" +
+        "<span onclick = 'removeItem(this)'> [x] </span>" +
+        "</li>";
+
+      todo.insertAdjacentHTML("afterbegin", newTodo);
+
+      newText.value = "";
+    }
+
+    function toggle(el) {
+      el.classList.toggle("done");
+    }
+
+    function removeItem(el) {
+      el.parentElement.remove();
+    }
+  </script>
+</html>
